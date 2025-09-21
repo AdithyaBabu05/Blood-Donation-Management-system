@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Donation History</title>
+    <link rel="stylesheet" href="../static/stylesdonor.css">
+</head>
+<body>
+    <div class="container">
+        <!-- Heading -->
+        <h2>Donation History</h2>
+
+        <!-- Donor Info -->
+        <p class="donor-info">
+            Donor: <strong>{{ donor_name }}</strong> (ID: {{ donor_id }})
+        </p>
+
+        <!-- Donation History Table -->
+        <div class="table-container">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Donation ID</th>
+                        <th>Date of Donation</th>
+                        <th>Blood Type</th>
+                        <th>Units Donated</th>
+                        <th>Location/Center</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% if donation_history %}
+                        {% for donation in donation_history %}
+                        <tr>
+                            <td>{{ donation[0] }}</td>
+                            <td>{{ donation[1] }}</td>
+                            <td>{{ donation[2] }}</td>
+                            <td>{{ donation[3] }}</td>
+                            <td>{{ donation[4] }}</td>
+                        </tr>
+                        {% endfor %}
+                    {% else %}
+                        <tr>
+                            <td colspan="5" class="no-data">No donations recorded yet.</td>
+                        </tr>
+                    {% endif %}
+                </tbody>
+            </table>
+        </div>
+
+        <!-- Back Button -->
+        <div class="back-container">
+            <a href="home.html" class="back-btn">← Back to Home</a>
+        </div>
+    </div>
+</body>
+</html>

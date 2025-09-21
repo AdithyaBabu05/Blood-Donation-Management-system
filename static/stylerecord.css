@@ -1,0 +1,99 @@
+body {
+    background-color: #ffe6f0;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    margin: 0;
+}
+
+.container {
+    width: 100%;
+    max-width: 400px;
+    padding: 20px;
+}
+
+/* Form styling */
+form {
+    background-color: #fff;
+    padding: 30px 35px;
+    border-radius: 12px;
+    box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+}
+
+h2 {
+    text-align: center;
+    color: #cc0066;
+    margin-bottom: 25px;
+    font-size: 24px;
+}
+
+label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+    color: #333;
+}
+
+input[type="number"],
+input[type="date"] {
+    width: 100%;
+    padding: 10px 12px;
+    margin-bottom: 20px;
+    border: 1px solid #cc99aa;
+    border-radius: 6px;
+    font-size: 14px;
+    box-sizing: border-box;
+}
+
+input[type="submit"] {
+    width: 100%;
+    padding: 12px;
+    background-color: #ff3366;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+input[type="submit"]:hover {
+    background-color: #cc0033;
+}
+
+/* Success message styling */
+.success {
+    display: none; /* hidden by default */
+    text-align: center;
+    background-color: #ccffcc;
+    padding: 30px 20px;
+    border-radius: 12px;
+    color: #006600;
+    font-size: 20px;
+    box-shadow: 0 8px 16px rgba(0,0,0,0.2);
+    margin-bottom: 20px;
+}
+
+/* Show success message when targeted */
+:target.success {
+    display: block;
+}
+
+/* Back button styling */
+.back-btn {
+    display: inline-block;
+    margin-top: 15px;
+    padding: 10px 20px;
+    background-color: #ff3366;
+    color: white;
+    text-decoration: none;
+    border-radius: 8px;
+    transition: background-color 0.3s ease;
+}
+
+.back-btn:hover {
+    background-color: #cc0033;
+}
+
+

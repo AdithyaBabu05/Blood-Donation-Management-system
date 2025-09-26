@@ -1,0 +1,76 @@
+/* styleview.css */
+
+/* Page Layout */
+body {
+    background-color: #ffe6e6; /* light pink background */
+    font-family: 'Segoe UI', Tahoma, sans-serif;
+    margin: 0;
+    padding: 20px;
+    text-align: center;
+}
+
+/* Heading */
+h2 {
+    font-size: 28px;
+    color: #b30000;
+    margin-bottom: 20px;
+    font-weight: bold;
+}
+
+/* Table Styling */
+table {
+    width: 90%;
+    margin: 0 auto;
+    border-collapse: collapse;
+    background: white;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    border-radius: 12px;
+    overflow: hidden;
+}
+
+/* Table Header */
+table th {
+    background-color: #ffb3b3;
+    color: #660000;
+    padding: 12px;
+    font-size: 16px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+/* Table Cells */
+table td {
+    padding: 12px;
+    border-bottom: 1px solid #ddd;
+    font-size: 15px;
+}
+
+/* Alternate Row Color */
+table tr:nth-child(even) {
+    background-color: #fff5f5;
+}
+
+/* Hover Effect */
+table tr:hover {
+    background-color: #ffe0e0;
+    transition: background-color 0.2s ease-in-out;
+}
+/* Back Button */
+.back-btn {
+    display: inline-block;
+    background-color: #ff4d4d;
+    color: white;
+    padding: 10px 18px;
+    border-radius: 8px;
+    text-decoration: none;
+    font-size: 16px;
+    font-weight: bold;
+    float: right;
+    margin: 15px 5% 20px 0; /* aligns with table */
+    box-shadow: 0 3px 6px rgba(0,0,0,0.2);
+    transition: background 0.3s ease-in-out;
+}
+
+.back-btn:hover {
+    background-color: #cc0000;
+}

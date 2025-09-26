@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blood Stock Report</title>
+    <link rel="stylesheet" href="stylestock.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Blood Stock Report</h1>
+            <p class="subtitle">Check the availability of different blood types</p>
+        </header>
+
+        <table>
+            <thead>
+                <tr>
+                    <th>Blood Type</th>
+                    <th>Total Units Available</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for stock in stock_report %}
+                <tr>
+                    <td>{{ stock[0] }}</td>
+                    <td>{{ stock[1] }}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+
+        <div class="button-container">
+           
+            
+
+        
+            <a href="home.html" class="btn">Back to Home</a> 
+        </div>
+    </div>
+</body>
+</html>

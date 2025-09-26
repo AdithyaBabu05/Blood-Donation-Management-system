@@ -1,0 +1,66 @@
+/* Light pink background and centering */
+body {
+    background-color: #ffe6f0;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    margin: 0;
+}
+
+/* Centered container for the form */
+.container {
+    width: 100%;
+    max-width: 420px;
+    padding: 20px;
+}
+
+/* Form card styling */
+form {
+    background-color: #fff;
+    padding: 30px 35px;
+    border-radius: 12px;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+    display: flex;
+    flex-direction: column; /* stack fields vertically */
+}
+
+/* Heading styling */
+h2 {
+    text-align: center;
+    color: #cc0066;
+    margin-bottom: 25px;
+    font-size: 24px;
+}
+
+/* Input field styling */
+form input[type="text"],
+form input[type="number"] {
+    display: block;
+    width: 100%;
+    padding: 10px 12px;
+    margin-bottom: 18px;
+    border: 1px solid #cc99aa;
+    border-radius: 6px;
+    font-size: 14px;
+    box-sizing: border-box;
+}
+
+/* Submit button styling */
+form input[type="submit"] {
+    width: 100%;
+    padding: 12px;
+    background-color: #ff3366;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+form input[type="submit"]:hover {
+    background-color: #cc0033;
+}

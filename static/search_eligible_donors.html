@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Search Eligible Donors</title>
+    <link rel="stylesheet" href="stylesearch.css">
+</head>
+<body>
+    <div class="container">
+        <h2>Search Eligible Donors</h2>
+        <form method="POST">
+            <label>Blood Type:</label>
+            <input type="text" name="blood_type" required>
+
+            <label>City:</label>
+            <input type="text" name="city" required>
+
+            <input type="submit" value="Search">
+        </form>
+
+        <h3>Results:</h3>
+        <table>
+            <tr><th>Name</th><th>Contact</th><th>Last Donation Date</th><th>City</th></tr>
+            {% for donor in eligible_donors %}
+            <tr>
+                <td>{{ donor[1] }}</td>
+                <td>{{ donor[3] }}</td>
+                <td>{{ donor[4] }}</td>
+                <td>{{ donor[5] }}</td>
+            </tr>
+            {% endfor %}
+        </table>
+    </div>
+</body>
+</html>

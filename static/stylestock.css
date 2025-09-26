@@ -1,0 +1,82 @@
+/* General Page Styling */
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: linear-gradient(to bottom, #ffe6f0, #ffd6e6);
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+}
+
+/* Container Styling */
+.container {
+    width: 90%;
+    max-width: 900px;
+    background-color: #fff;
+    padding: 30px 40px;
+    margin: 50px auto;
+    border-radius: 15px;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+}
+
+/* Header Styling */
+header h1 {
+    text-align: center;
+    color: #b30059;
+    font-size: 36px;
+    margin-bottom: 5px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.subtitle {
+    text-align: center;
+    color: #99003d;
+    font-size: 16px;
+    margin-bottom: 30px;
+}
+
+/* Table Styling */
+table {
+    border-collapse: collapse;
+    width: 100%;
+    font-size: 16px;
+    margin-bottom: 30px;
+}
+
+thead th {
+    background-color: #ffb3d1;
+    color: #660033;
+    padding: 14px;
+    text-align: center;
+}
+
+tbody td {
+    padding: 12px;
+    text-align: center;
+    border-bottom: 1px solid #ffcccc;
+}
+
+tbody tr:hover {
+    background-color: #ffe6f2;
+}
+
+/* Button Styling */
+.button-container {
+    text-align: center;
+}
+
+.btn {
+    display: inline-block;
+    background-color: #b30059;
+    color: #fff;
+    text-decoration: none;
+    padding: 12px 25px;
+    border-radius: 8px;
+    font-weight: bold;
+    transition: background-color 0.3s ease;
+}
+
+.btn:hover {
+    background-color: #99003d;
+}

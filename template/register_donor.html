@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Register Donor</title>
+    <link rel="stylesheet" href="../static/styledon.css">>
+</head>
+<body>
+    <div class="form-container">
+        <form id="donorForm">
+            <h2>Register New Donor</h2>
+
+            <label for="name">Name:</label>
+            <input type="text" id="name" name="name" placeholder="Enter full name" required>
+
+            <label for="blood_type">Blood Type:</label>
+            <input type="text" id="blood_type" name="blood_type" placeholder="e.g., A+" required>
+
+            <label for="contact">Contact:</label>
+            <input type="text" id="contact" name="contact" placeholder="Enter contact number" required>
+
+            <label for="last_donation_date">Last Donation Date:</label>
+            <input type="date" id="last_donation_date" name="last_donation_date" required>
+
+            <label for="city">City:</label>
+            <input type="text" id="city" name="city" placeholder="Enter city" required>
+
+            <input type="submit" value="Register">
+        </form>
+
+        <div class="success-message" id="successMessage">
+            <h2>Successfully Registered!</h2>
+            <p>Redirecting to Home Page...</p>
+        </div>
+    </div>
+
+    <script>
+        const form = document.getElementById("donorForm");
+        const successMessage = document.getElementById("successMessage");
+
+        form.addEventListener("submit", function(e) {
+            e.preventDefault(); // Prevent actual form submission
+            form.style.display = "none"; // Hide the form
+            successMessage.style.display = "block"; // Show success message
+            setTimeout(() => {
+                window.location.href = "home.html"; // Redirect after 3 seconds
+            }, 3000);
+        });
+    </script>
+</body>
+</html>
+
+

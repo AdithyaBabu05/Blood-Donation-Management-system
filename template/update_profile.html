@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Update Donor Profile</title>
+    <link rel="stylesheet" href="../static/stylesprofile.css">
+</head>
+<body>
+    <div class="form-container">
+
+        <!-- Hidden checkbox to toggle success -->
+        <input type="checkbox" id="submitted" hidden>
+
+        <form>
+            <h2>Update Donor Profile</h2>
+
+            <label for="donor_id">Donor ID:</label>
+            <input type="number" id="donor_id" name="donor_id" required>
+
+            <label for="contact">New Contact:</label>
+            <input type="text" id="contact" name="contact">
+
+            <label for="city">New City:</label>
+            <input type="text" id="city" name="city">
+
+            <label for="last_donation_date">New Last Donation Date:</label>
+            <input type="date" id="last_donation_date" name="last_donation_date">
+
+            <!-- Label styled as button -->
+            <label for="submitted" class="submit-btn">Update Profile</label>
+        </form>
+
+        <!-- Success Message -->
+        <div class="success-message">
+            <h2>Profile Updated Successfully!</h2>
+            <p>Go back to <a href="home.html">Home Page</a></p>
+        </div>
+
+    </div>
+</body>
+</html>

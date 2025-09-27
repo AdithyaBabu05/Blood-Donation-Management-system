@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Blood Requests</title>
+    <link rel="stylesheet" href="../static/styleview.css">
+</head>
+<body>
+    <!-- Back Button -->
+    <a href="home.html" class="back-btn">Back to Homepage</a>
+
+    <h2>All Blood Requests</h2>
+    <table>
+        <tr>
+            <th>Request ID</th>
+            <th>Hospital ID</th>
+            <th>Blood Type</th>
+            <th>Quantity</th>
+            <th>Request Date</th>
+            <th>Status</th>
+        </tr>
+        {% for request in requests %}
+        <tr>
+            <td>{{ request[0] }}</td>
+            <td>{{ request[1] }}</td>
+            <td>{{ request[2] }}</td>
+            <td>{{ request[3] }}</td>
+            <td>{{ request[4] }}</td>
+            <td>{{ request[5] }}</td>
+        </tr>
+        {% endfor %}
+    </table>
+</body>
+</html>

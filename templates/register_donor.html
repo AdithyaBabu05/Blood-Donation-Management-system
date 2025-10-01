@@ -1,59 +1,25 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width,initial-scale=1" />
-    <title>Register Donor — BDMS</title>
-
-    <!-- correct static link for Flask -->
-    <link rel="stylesheet" href="{{ url_for('static', filename='styledon.css') }}">
-    <style>
-      /* small inline tweaks — move to your CSS if you want */
-      .form-container { max-width:520px; margin:2rem auto; padding:1.25rem; border-radius:10px; box-shadow:0 8px 30px rgba(0,0,0,.06); background:#fff; }
-      label { display:block; margin-top:0.8rem; font-weight:600; }
-      input[type="text"], input[type="date"], input[type="number"], select {
-        width:100%; padding:0.6rem; margin-top:0.25rem; border-radius:6px; border:1px solid #ddd;
-      }
-      input[type="submit"] { margin-top:1rem; background:#c62828; color:#fff; border:none; padding:0.65rem 1rem; border-radius:8px; cursor:pointer; font-weight:700; }
-      .success-message { display:none; text-align:center; padding:1rem; background:#f0fff4; border:1px solid #d6f5df; border-radius:8px; color:#0b6b2b; }
-      .back-btn { display:inline-block; margin-top:0.5rem; text-decoration:none; color:#c62828; font-weight:600; }
-      .flashes { margin-bottom:0.8rem; }
-      .flash.success { background:#fff3f0; padding:0.6rem; border-radius:6px; color:#7a001f; }
-    </style>
+    <title>Register Donor</title>
+    <link rel="stylesheet" href="../static/styledon.css">>
 </head>
 <body>
-  <main>
-    <div class="form-container" role="main" aria-labelledby="formTitle">
-        <h2 id="formTitle">Register New Donor</h2>
+    <div class="form-container">
+        <form id="donorForm">
+            <h2>Register New Donor</h2>
 
-        <!-- show server-side flash messages (e.g., "Donor registered!") -->
-        {% with messages = get_flashed_messages(with_categories=true) %}
-          {% if messages %}
-            <div class="flashes">
-              {% for category, message in messages %}
-                <div class="flash {{ category }}">{{ message }}</div>
-              {% endfor %}
-            </div>
-          {% endif %}
-        {% endwith %}
-
-        <!-- Form posts to your Flask route -->
-        <form id="donorForm" method="POST" action="{{ url_for('register_donor') }}" novalidate>
             <label for="name">Name:</label>
             <input type="text" id="name" name="name" placeholder="Enter full name" required>
 
             <label for="blood_type">Blood Type:</label>
-            <!-- pattern ensures only A/B/AB/O with + or - (case-insensitive thanks to JS) -->
-            <input type="text" id="blood_type" name="blood_type" placeholder="e.g., A+, O-" 
-                   pattern="^(A|B|AB|O)[+-]$" title="Enter blood type like A+, O-, AB+, etc." required>
+            <input type="text" id="blood_type" name="blood_type" placeholder="e.g., A+" required>
 
             <label for="contact">Contact:</label>
-            <input type="text" id="contact" name="contact" placeholder="Enter contact number" 
-                   pattern="^[0-9+\-\s]{7,20}$" title="Digits, spaces, + or - (7–20 chars)" required>
+            <input type="text" id="contact" name="contact" placeholder="Enter contact number" required>
 
-            <label for="last_donation_date">Last Donation Date (optional):</label>
-            <!-- optional: don't force users to enter a date -->
-            <input type="date" id="last_donation_date" name="last_donation_date">
+            <label for="last_donation_date">Last Donation Date:</label>
+            <input type="date" id="last_donation_date" name="last_donation_date" required>
 
             <label for="city">City:</label>
             <input type="text" id="city" name="city" placeholder="Enter city" required>
@@ -61,32 +27,25 @@
             <input type="submit" value="Register">
         </form>
 
-        <!-- server-driven success is preferred; keep this if you want a client-side message too -->
-        <div class="success-message" id="successMessage" aria-live="polite">
-            <h3>Successfully Registered!</h3>
+        <div class="success-message" id="successMessage">
+            <h2>Successfully Registered!</h2>
             <p>Redirecting to Home Page...</p>
-            <a class="back-btn" href="{{ url_for('home') }}">Back to Home</a>
         </div>
     </div>
-  </main>
 
-  <script>
-    // Normalize blood type to uppercase and remove accidental spaces
-    const bloodInput = document.getElementById('blood_type');
-    bloodInput.addEventListener('input', () => {
-      let v = bloodInput.value.toUpperCase().replace(/\s+/g, '');
-      // allow partial typing like "A" or "AB" while typing; don't enforce full pattern here
-      bloodInput.value = v;
-    });
+    <script>
+        const form = document.getElementById("donorForm");
+        const successMessage = document.getElementById("successMessage");
 
-    // Optional: show client-side success message when server redirects back with flash
-    // If you prefer pure server-flow (form POST => redirect), you can remove the code below.
-    (function () {
-      // If the template includes flashing on success the page will be redirected by server.
-      // But if you ever switch to AJAX, show successMessage on success.
-      // Keep this here as a harmless no-op.
-    })();
-  </script>
+        form.addEventListener("submit", function(e) {
+            e.preventDefault(); // Prevent actual form submission
+            form.style.display = "none"; // Hide the form
+            successMessage.style.display = "block"; // Show success message
+            setTimeout(() => {
+                window.location.href = "home.html"; // Redirect after 3 seconds
+            }, 3000);
+        });
+    </script>
 </body>
 </html>
 

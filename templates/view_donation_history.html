@@ -1,40 +1,57 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <title>Update Donor Profile</title>
-    <link rel="stylesheet" href="../static/stylesprofile.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Donation History</title>
+    <link rel="stylesheet" href="../static/stylesdonor.css">
 </head>
 <body>
-    <div class="form-container">
+    <div class="container">
+        <!-- Heading -->
+        <h2>Donation History</h2>
 
-        <!-- Hidden checkbox to toggle success -->
-        <input type="checkbox" id="submitted" hidden>
+        <!-- Donor Info -->
+        <p class="donor-info">
+            Donor: <strong>{{ donor_name }}</strong> (ID: {{ donor_id }})
+        </p>
 
-        <form>
-            <h2>Update Donor Profile</h2>
-
-            <label for="donor_id">Donor ID:</label>
-            <input type="number" id="donor_id" name="donor_id" required>
-
-            <label for="contact">New Contact:</label>
-            <input type="text" id="contact" name="contact">
-
-            <label for="city">New City:</label>
-            <input type="text" id="city" name="city">
-
-            <label for="last_donation_date">New Last Donation Date:</label>
-            <input type="date" id="last_donation_date" name="last_donation_date">
-
-            <!-- Label styled as button -->
-            <label for="submitted" class="submit-btn">Update Profile</label>
-        </form>
-
-        <!-- Success Message -->
-        <div class="success-message">
-            <h2>Profile Updated Successfully!</h2>
-            <p>Go back to <a href="home.html">Home Page</a></p>
+        <!-- Donation History Table -->
+        <div class="table-container">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Donation ID</th>
+                        <th>Date of Donation</th>
+                        <th>Blood Type</th>
+                        <th>Units Donated</th>
+                        <th>Location/Center</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% if donation_history %}
+                        {% for donation in donation_history %}
+                        <tr>
+                            <td>{{ donation[0] }}</td>
+                            <td>{{ donation[1] }}</td>
+                            <td>{{ donation[2] }}</td>
+                            <td>{{ donation[3] }}</td>
+                            <td>{{ donation[4] }}</td>
+                        </tr>
+                        {% endfor %}
+                    {% else %}
+                        <tr>
+                            <td colspan="5" class="no-data">No donations recorded yet.</td>
+                        </tr>
+                    {% endif %}
+                </tbody>
+            </table>
         </div>
 
+        <!-- Back Button -->
+        <div class="back-container">
+            <a href="home.html" class="back-btn">← Back to Home</a>
+        </div>
     </div>
 </body>
 </html>

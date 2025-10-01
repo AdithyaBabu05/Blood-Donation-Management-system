@@ -2,7 +2,7 @@
 <html>
 <head>
     <title>BDMS Home</title>
-    <link rel="stylesheet" href="../static/styles.css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
 </head>
 <body>
     <!-- Banner Section -->
@@ -23,7 +23,7 @@
         <div class="menu-section">
             <button class="main-btn">Donor</button>
             <div class="submenu">
-                <a href="register_donor.html">Register Donor</a>
+                <a href="{{ url_for('register_donor') }}">Register Donor</a>
                 <a href="update_profile.html">Update Donor Profile</a>
                 <a href="view_donation_history.html">View Donation History</a>
                 <a href="record_donation.html">Record Donation</a>
@@ -43,9 +43,9 @@
         <div class="menu-section">
             <button class="main-btn">Blood Stock</button>
             <div class="submenu">
-                <a href="manage_stock.html">Manage Blood Stock</a>
-                <a href="stock_report.html">Blood Stock Report</a>
-                <a href="search_eligible_donors.html">Search Eligible Donors</a>
+                <a href="{{ url_for('manage_stock') }}">Manage Stock</a>
+                <a href="{{ url_for('stock_report') }}">Stock Report</a>
+                <a href="{{ url_for('search_eligible_donors') }}">Search Eligible Donors</a>
             </div>
         </div>
     </div>

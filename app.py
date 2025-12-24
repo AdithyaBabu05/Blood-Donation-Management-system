@@ -1,6 +1,9 @@
 from flask import Flask, render_template, request, redirect, url_for, flash, g
 import sqlite3
 from datetime import datetime
+import os
+from create_db import init_db
+
 
 # --- Configuration ---
 DATABASE = "bdms.db"
@@ -325,18 +328,9 @@ def add_bank():
 
 # Run the app
 if __name__ == "__main__":
-    # Ensure stock table exists on startup
-    db = sqlite3.connect(DATABASE)
-    cur = db.cursor()
-    cur.execute("""
-        CREATE TABLE IF NOT EXISTS blood_stock (
-            blood_type TEXT PRIMARY KEY,
-            total_units INTEGER DEFAULT 0
-        )
-    """)
-    db.commit()
-    db.close()
-
+    if not os.path.exists(DATABASE):
+        init_db()
     app.run(debug=True)
+
 
        

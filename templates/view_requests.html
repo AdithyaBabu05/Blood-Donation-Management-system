@@ -1,18 +1,32 @@
+
+
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
+    <meta charset="UTF-8">
     <title>Blood Requests</title>
-    <link rel="stylesheet" href="../static/styleview.css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='styleview.css') }}">
+    <style>
+        /* Inline styling for status colors */
+        .status-accepted { color: green; font-weight: bold; }
+        .status-rejected { color: red; font-weight: bold; }
+        .status-pending { color: orange; font-weight: bold; }
+        table { border-collapse: collapse; width: 100%; }
+        th, td { border: 1px solid #ddd; padding: 8px; text-align: center; }
+        th { background-color: #f2f2f2; }
+        .back-btn { display: inline-block; margin: 20px 0; text-decoration: none; color: #333; }
+    </style>
 </head>
 <body>
     <!-- Back Button -->
-    <a href="home.html" class="back-btn">Back to Homepage</a>
+    <a href="{{ url_for('home') }}" class="back-btn">⬅ Back to Homepage</a>
 
     <h2>All Blood Requests</h2>
     <table>
         <tr>
-            <th>Request ID</th>
-            <th>Hospital ID</th>
+            <th>Hospital Name</th>
+            <th>Hospital City</th>
+            <th>Hospital Contact</th>
             <th>Blood Type</th>
             <th>Quantity</th>
             <th>Request Date</th>
@@ -20,14 +34,19 @@
         </tr>
         {% for request in requests %}
         <tr>
-            <td>{{ request[0] }}</td>
-            <td>{{ request[1] }}</td>
-            <td>{{ request[2] }}</td>
-            <td>{{ request[3] }}</td>
-            <td>{{ request[4] }}</td>
-            <td>{{ request[5] }}</td>
+            
+            <td>{{ request['hospital_name'] }}</td>
+            <td>{{ request['hospital_city'] }}</td>
+            <td>{{ request['hospital_contact'] }}</td>
+            <td>{{ request['blood_type'] }}</td>
+            <td>{{ request['quantity'] }}</td>
+            <td>{{ request['request_date'] }}</td>
+            <td class="status-{% if request['status'] == 'Accepted' %}accepted{% elif request['status'] == 'Rejected' %}rejected{% else %}pending{% endif %}">
+                {{ request['status'] }}
+            </td>
         </tr>
         {% endfor %}
     </table>
 </body>
 </html>
+

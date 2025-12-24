@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Search Eligible Donors</title>
-    <link rel="stylesheet" href="../static/stylesearch.css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='stylesearch.css') }}">
 </head>
 <body>
     <div class="container">
@@ -19,18 +19,36 @@
             <input type="submit" value="Search">
         </form>
 
-        <h3>Results:</h3>
-        <table>
-            <tr><th>Name</th><th>Contact</th><th>Last Donation Date</th><th>City</th></tr>
-            {% for donor in eligible_donors %}
-            <tr>
-                <td>{{ donor[1] }}</td>
-                <td>{{ donor[3] }}</td>
-                <td>{{ donor[4] }}</td>
-                <td>{{ donor[5] }}</td>
-            </tr>
-            {% endfor %}
-        </table>
+        {% if searched %}
+            <h3>Results:</h3>
+            {% if eligible_donors %}
+                <table>
+                    <tr>
+                        <th>Name</th>
+                        <th>Blood Type</th>
+                        <th>Contact</th>
+                        <th>Last Donation Date</th>
+                        <th>City</th>
+                    </tr>
+                    {% for donor in eligible_donors %}
+                    <tr>
+                        <td>{{ donor['name'] }}</td>
+                        <td>{{ donor['blood_type'] }}</td>
+                        <td>{{ donor['contact'] }}</td>
+                        <td>{{ donor['last_donation_date'] or 'Never Donated' }}</td>
+                        <td>{{ donor['city'] }}</td>
+                    </tr>
+                    {% endfor %}
+                </table>
+            {% else %}
+                <p>No eligible donors.</p>
+            {% endif %}
+
+            <!-- Back to Home button -->
+            <div class="button-container">
+                <a href="{{ url_for('home') }}" class="btn">Back to Home</a>
+            </div>
+        {% endif %}
     </div>
 </body>
 </html>

@@ -1,23 +1,30 @@
+
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Submit Blood Request</title>
-    <link rel="stylesheet" href="../static/stylesubmit.css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='stylesubmit.css') }}">
 </head>
 <body>
+
+
     <div class="container">
-        <form action="home.html" method="GET">
+        <form action="{{ url_for('submit_blood_request') }}" method="POST">
             <h2>Submit Blood Request</h2>
 
             <input type="text" name="hospital_name" placeholder="Hospital Name" required>
             <input type="text" name="hospital_city" placeholder="Hospital City" required>
             <input type="text" name="hospital_contact" placeholder="Hospital Contact" required>
-            <input type="text" name="blood_type" placeholder="Blood Type" required>
+            <input type="text" name="blood_type" placeholder="Blood Type (e.g. A+, O-)" required>
             <input type="number" name="quantity" placeholder="Quantity (Units)" required>
 
-            <!-- This will submit and go to home.html -->
             <input type="submit" value="Submit Request">
         </form>
     </div>
 </body>
 </html>
+
+
+

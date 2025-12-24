@@ -1,94 +1,130 @@
+/* stylerecord.css */
+
+/* General page setup */
 body {
     background-color: #ffe6f0;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     display: flex;
     justify-content: center;
-    align-items: center;
+    align-items: flex-start;
     min-height: 100vh;
     margin: 0;
+    padding: 40px 10px;
 }
 
+/* Container */
 .container {
     width: 100%;
-    max-width: 400px;
-    padding: 20px;
+    max-width: 420px;
+    background: #fff;
+    padding: 35px 40px;
+    border-radius: 14px;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+}
+
+/* Heading */
+.container h1 {
+    text-align: center;
+    color: #b30059;
+    font-size: 1.8rem;
+    font-weight: bold;
+    margin-top: 0;
+    margin-bottom: 25px;
+}
+
+/* Flash messages */
+.flash-message {
+    padding: 10px 15px;
+    border-radius: 6px;
+    margin-bottom: 15px;
+    font-weight: 600;
+    text-align: center;
+    animation: fadeIn 0.5s ease;
+}
+.flash-success {
+    background-color: #d4edda;
+    color: #155724;
+}
+.flash-danger {
+    background-color: #f8d7da;
+    color: #721c24;
+}
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(-6px); }
+    to { opacity: 1; transform: translateY(0); }
 }
 
 /* Form styling */
-form {
-    background-color: #fff;
-    padding: 30px 35px;
-    border-radius: 12px;
-    box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+.donation-form {
+    display: flex;
+    flex-direction: column;
 }
 
-h2 {
-    text-align: center;
-    color: #cc0066;
-    margin-bottom: 25px;
-    font-size: 24px;
-}
-
+/* Labels */
 label {
-    display: block;
-    margin-bottom: 5px;
-    font-weight: bold;
-    color: #333;
+    margin-bottom: 6px;
+    font-weight: 600;
+    color: #444;
 }
 
+/* Input fields */
+input[type="text"],
 input[type="number"],
-input[type="date"] {
+input[type="date"],
+select {
     width: 100%;
-    padding: 10px 12px;
-    margin-bottom: 20px;
+    padding: 12px 14px;
+    margin-bottom: 18px;
     border: 1px solid #cc99aa;
-    border-radius: 6px;
-    font-size: 14px;
-    box-sizing: border-box;
+    border-radius: 8px;
+    font-size: 0.95rem;
+    transition: border-color 0.2s ease, box-shadow 0.2s ease;
 }
 
-input[type="submit"] {
-    width: 100%;
-    padding: 12px;
+input:focus,
+select:focus {
+    border-color: #ff3366;
+    box-shadow: 0 0 6px rgba(255, 51, 102, 0.2);
+    outline: none;
+}
+
+/* New bank fields */
+#new_bank_fields {
+    background-color: #fff3f7;
+    padding: 10px 14px;
+    border-radius: 8px;
+    margin-bottom: 18px;
+}
+
+/* Submit button */
+button[type="submit"] {
     background-color: #ff3366;
-    color: white;
+    color: #fff;
+    font-weight: 700;
+    padding: 12px;
     border: none;
     border-radius: 8px;
-    font-size: 16px;
+    font-size: 1rem;
     cursor: pointer;
+    transition: background-color 0.25s ease, transform 0.15s ease;
 }
 
-input[type="submit"]:hover {
+button[type="submit"]:hover {
     background-color: #cc0033;
+    transform: translateY(-1px);
 }
 
-/* Success message styling */
-.success {
-    display: none; /* hidden by default */
-    text-align: center;
-    background-color: #ccffcc;
-    padding: 30px 20px;
-    border-radius: 12px;
-    color: #006600;
-    font-size: 20px;
-    box-shadow: 0 8px 16px rgba(0,0,0,0.2);
-    margin-bottom: 20px;
-}
-
-/* Show success message when targeted */
-:target.success {
-    display: block;
-}
-
-/* Back button styling */
+/* Back button (if added later) */
 .back-btn {
     display: inline-block;
-    margin-top: 15px;
+    margin-top: 18px;
     padding: 10px 20px;
     background-color: #ff3366;
-    color: white;
+    color: #fff;
     text-decoration: none;
     border-radius: 8px;
+    font-size: 0.9rem;
+    font-weight: 600;
     transition: background-color 0.3s ease;
 }
 
@@ -96,4 +132,15 @@ input[type="submit"]:hover {
     background-color: #cc0033;
 }
 
-
+/* Responsive design */
+@media (max-width: 480px) {
+    .container {
+        padding: 25px 20px;
+    }
+    .container h1 {
+        font-size: 1.5rem;
+    }
+    input, select, button {
+        font-size: 0.9rem;
+    }
+}

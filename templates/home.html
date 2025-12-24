@@ -2,13 +2,12 @@
 <html>
 <head>
     <title>BDMS Home</title>
-    <link rel="stylesheet" href="../static/styles.css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
 </head>
 <body>
     <!-- Banner Section -->
     <div class="caption">
         <img src="https://tse2.mm.bing.net/th/id/OIP.86WEx-9SO4JhQvPfHL2l4AHaEc?pid=Api&P=0&h=180" alt="Blood Donation Banner">
-        
     </div>
 
     <!-- Heading -->
@@ -23,10 +22,10 @@
         <div class="menu-section">
             <button class="main-btn">Donor</button>
             <div class="submenu">
-                <a href="register_donor.html">Register Donor</a>
-                <a href="update_profile.html">Update Donor Profile</a>
-                <a href="view_donation_history.html">View Donation History</a>
-                <a href="record_donation.html">Record Donation</a>
+                <a href="{{ url_for('register_donor') }}">Register Donor</a>
+                <a href="{{ url_for('update_donor') }}">Update Donor Profile</a>
+                <a href="{{ url_for('view_donations') }}">View Donation History</a>
+                <a href="{{ url_for('record_donation') }}">Record Donation</a>
             </div>
         </div>
 
@@ -34,8 +33,8 @@
         <div class="menu-section">
             <button class="main-btn">Blood Requests</button>
             <div class="submenu">
-                <a href="submit_blood.html">Submit Blood Request</a>
-                <a href="view_requests.html">View Blood Requests</a>
+                <a href="{{ url_for('submit_blood_request') }}">Submit Blood Request</a>
+            
             </div>
         </div>
 
@@ -43,9 +42,9 @@
         <div class="menu-section">
             <button class="main-btn">Blood Stock</button>
             <div class="submenu">
-                <a href="manage_stock.html">Manage Blood Stock</a>
-                <a href="stock_report.html">Blood Stock Report</a>
-                <a href="search_eligible_donors.html">Search Eligible Donors</a>
+                <a href="{{ url_for('manage_stock') }}">Manage Stock</a>
+                <a href="{{ url_for('stock_report') }}">Stock Report</a>
+                <a href="{{ url_for('search_eligible_donors') }}">Search Eligible Donors</a>
             </div>
         </div>
     </div>

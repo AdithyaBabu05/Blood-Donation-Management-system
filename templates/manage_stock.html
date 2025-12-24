@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Manage Blood Record</title>
-    <link rel="stylesheet" href="../static/stylemanage.css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='stylemanage.css') }}">
     <style>
         /* Modal overlay */
         .modal {
@@ -78,39 +78,65 @@
     </script>
 </head>
 <body>
-    <form onsubmit="handleSubmit(event)">
-        <h2>Manage Blood Stock</h2>
-
+    <div style="margin-top: 20px;">
+    <h2>Manage Blood Stock</h2>
+    <form method="POST" action="{{ url_for('manage_stock') }}">
         <label for="blood_type">Blood Type:</label>
-        <input type="text" id="blood_type" name="blood_type" placeholder="e.g., A+, O-" required>
+        <input type="text" id="blood_type" name="blood_type" required>
 
-        <label for="quantity">Quantity (Units):</label>
-        <input type="number" id="quantity" name="quantity" placeholder="Enter number of units" required>
+        <label for="quantity">Units:</label>
+        <input type="number" id="quantity" name="quantity" required>
 
         <label for="donor_name">Donor Name:</label>
-        <input type="text" id="donor_name" name="donor_name" placeholder="Enter donor's name" required>
+        <input type="text" id="donor_name" name="donor_name">
+        <label for="donor_contact">Donor Contact:</label>
+        <input type="text" id="donor_contact" name="donor_contact">
 
         <label for="donation_date">Donation Date:</label>
-        <input type="text" id="donation_date" name="donation_date" placeholder="YYYY-MM-DD" required>
+        <input type="date" id="donation_date" name="donation_date" value="{{ default_date|default('') }}">
 
         <label for="blood_bank">Blood Bank:</label>
-        <select id="blood_bank" name="blood_bank" required>
-            <option value="" disabled selected>Select Blood Bank</option>
-            <option value="central">Central Blood Bank</option>
-            <option value="north">North Branch</option>
-            <option value="south">South Branch</option>
-        </select>
+<select id="bank_select" name="bank_select" onchange="toggleNewBank()">
+    <option value="">-- Select a Bank --</option>
+    {% for bank in banks %}
+        <option value="{{ bank.id }}">{{ bank.name }} ({{ bank.city }})</option>
+    {% endfor %}
+    <option value="new">+ Add New Bank</option>
+</select>
+
+<!-- Hidden new bank inputs -->
+<div id="new_bank_fields" style="display:none; margin-top:10px;">
+    <label for="new_bank_name">New Bank Name:</label>
+    <input type="text" id="new_bank_name" name="new_bank_name">
+
+    <label for="new_bank_city">City:</label>
+    <input type="text" id="new_bank_city" name="new_bank_city">
+</div>
+
+<script>
+function toggleNewBank() {
+    const select = document.getElementById("bank_select");
+    const newBankFields = document.getElementById("new_bank_fields");
+    if (select.value === "new") {
+        newBankFields.style.display = "block";
+    } else {
+        newBankFields.style.display = "none";
+    }
+}
+</script>
+
 
         <input type="submit" value="Update Stock">
     </form>
-
-    <!-- Success Modal -->
-    <div id="successModal" class="modal">
-        <div class="modal-content">
-            Stock updated successfully!
-            <br>
-            <button onclick="goHome()">Back to Home</button>
-        </div>
     </div>
+    <script>
+      // Hide flash messages after 2 seconds
+      setTimeout(() => {
+        const flash = document.getElementById('flash-messages');
+        if(flash) {
+          flash.style.display = 'none';
+        }
+      }, 2000);
+    </script>
 </body>
 </html>

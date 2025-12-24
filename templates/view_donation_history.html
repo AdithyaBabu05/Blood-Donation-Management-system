@@ -2,55 +2,69 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Donation History</title>
-    <link rel="stylesheet" href="../static/stylesdonor.css">
+    <title>View Donation History</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='stylesdonor.css') }}">
 </head>
 <body>
     <div class="container">
-        <!-- Heading -->
-        <h2>Donation History</h2>
+        <h1>View Donations</h1>
 
-        <!-- Donor Info -->
-        <p class="donor-info">
-            Donor: <strong>{{ donor_name }}</strong> (ID: {{ donor_id }})
-        </p>
+        <!-- Flash messages -->
+        {% with messages = get_flashed_messages(with_categories=true) %}
+            {% if messages %}
+                <ul class="flash-messages">
+                {% for category, message in messages %}
+                    <li class="{{ category }}">{{ message }}</li>
+                {% endfor %}
+                </ul>
+            {% endif %}
+        {% endwith %}
 
-        <!-- Donation History Table -->
-        <div class="table-container">
-            <table>
-                <thead>
-                    <tr>
-                        <th>Donation ID</th>
-                        <th>Date of Donation</th>
-                        <th>Blood Type</th>
-                        <th>Units Donated</th>
-                        <th>Location/Center</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    {% if donation_history %}
-                        {% for donation in donation_history %}
-                        <tr>
-                            <td>{{ donation[0] }}</td>
-                            <td>{{ donation[1] }}</td>
-                            <td>{{ donation[2] }}</td>
-                            <td>{{ donation[3] }}</td>
-                            <td>{{ donation[4] }}</td>
-                        </tr>
-                        {% endfor %}
-                    {% else %}
-                        <tr>
-                            <td colspan="5" class="no-data">No donations recorded yet.</td>
-                        </tr>
-                    {% endif %}
-                </tbody>
-            </table>
-        </div>
+        <!-- Donor search form -->
+        <form method="POST" class="search-form">
+            <label for="donor_name">Donor Name:</label>
+            <input type="text" name="donor_name" id="donor_name" placeholder="Enter full name" required>
 
-        <!-- Back Button -->
+            <label for="donor_contact">Donor Contact:</label>
+            <input type="text" name="donor_contact" id="donor_contact" placeholder="Enter contact" required>
+
+            <button type="submit">View History</button>
+        </form>
+
+        {% if donor %}
+            <h2>Donation History for {{ donor['name'] }} ({{ donor['contact'] }})</h2>
+
+            {% if donations %}
+                <div class="table-container">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Date</th>
+                                <th>Blood Type</th>
+                                <th>Units</th>
+                             
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for d in donations %}
+                            <tr>
+                                <td>{{ d['donation_date'] }}</td>
+                                <td>{{ d['blood_type'] }}</td>
+                                <td>{{ d['units'] }}</td>
+                             
+
+                            </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+            {% else %}
+                <p>No donations recorded for this donor yet.</p>
+            {% endif %}
+        {% endif %}
+
         <div class="back-container">
-            <a href="home.html" class="back-btn">← Back to Home</a>
+            <a href="{{ url_for('home') }}" class="back-btn">← Back to Home</a>
         </div>
     </div>
 </body>

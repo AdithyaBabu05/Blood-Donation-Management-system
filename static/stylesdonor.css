@@ -1,124 +1,141 @@
+Conversation opened. 1 read message. 
 
+Skip to content
+Using Muthoot Institute Of Technology and Science Mail with screen readers
 
+1 of 2,473
+(no subject)
+Inbox
+
+ADITHYA BABU
+10:55 PM (2 minutes ago)
+to me
+
+/* General styling */
 body {
-    background-color: #ffe6f0;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    min-height: 100vh;
+    font-family: 'Poppins', sans-serif;
+    background-color: #ffe6e9;
     margin: 0;
-    padding: 10px;
+    padding: 0;
+    text-align: center;
 }
 
+/* Container card */
 .container {
-    width: 100%;
-    max-width: 420px;
-    padding: 10px;
+    background-color: white;
+    width: 400px;
+    margin: 60px auto;
+    padding: 30px 40px;
+    border-radius: 20px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
 }
 
-/* Form styling */
-form {
-    background-color: #ffffff;
-    padding: 35px 30px;
-    border-radius: 14px;
-    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
-    display: flex;
-    flex-direction: column;
-    gap: 18px;
-}
-
-h2 {
-    text-align: center;
-    color: #cc0066;
-    margin: 0 0 15px 0;
-    font-size: 26px;
-    font-weight: bold;
-}
-
-label {
-    font-weight: 600;
-    color: #333333;
-    font-size: 15px;
-}
-
-input[type="number"],
-input[type="date"] {
-    width: 100%;
-    padding: 12px 14px;
-    border: 1px solid #cc99aa;
-    border-radius: 8px;
-    font-size: 15px;
-    box-sizing: border-box;
-    transition: border 0.3s ease, box-shadow 0.3s ease;
-}
-
-input[type="number"]:focus,
-input[type="date"]:focus {
-    border-color: #ff6699;
-    box-shadow: 0 0 6px rgba(255, 102, 153, 0.4);
-    outline: none;
-}
-
-input[type="submit"] {
-    width: 100%;
-    padding: 14px;
-    background-color: #ff3366;
-    color: #ffffff;
-    border: none;
-    border-radius: 8px;
-    font-size: 17px;
-    font-weight: bold;
-    cursor: pointer;
-    transition: background-color 0.3s ease, transform 0.1s ease-in-out;
-}
-
-input[type="submit"]:hover {
-    background-color: #cc0033;
-    transform: scale(1.02);
-}
-
-/* Success message styling */
-.success {
-    text-align: center;
-    background-color: #ccffcc;
-    padding: 30px 25px;
-    border-radius: 14px;
-    color: #006600;
-    font-size: 20px;
-    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+/* Title */
+h1 {
+    color: #72002b;
     margin-bottom: 20px;
 }
 
-/* Back button styling */
+/* Labels & Inputs */
+label {
+    display: block;
+    text-align: left;
+    margin-top: 15px;
+    font-weight: bold;
+    color: #72002b;
+}
+
+input {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    margin-top: 6px;
+    font-size: 15px;
+}
+
+input:focus {
+    outline: none;
+    border-color: #ff5c8a;
+    box-shadow: 0 0 5px rgba(255, 92, 138, 0.3);
+}
+
+/* Button */
+.btn-primary {
+    background-color: #ff5c8a;
+    border: none;
+    color: white;
+    padding: 12px;
+    width: 100%;
+    border-radius: 10px;
+    font-size: 16px;
+    margin-top: 25px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.btn-primary:hover {
+    background-color: #e14e79;
+}
+
+/* Flash messages */
+.flash-messages {
+    list-style: none;
+    padding: 0;
+    margin: 10px 0;
+}
+
+.flash-messages li {
+    background-color: #ffe0e0;
+    border: 1px solid #ffb3b3;
+    padding: 10px;
+    border-radius: 8px;
+    color: #72002b;
+}
+
+/* Donation table */
+.table-container {
+    margin-top: 25px;
+    overflow-x: auto;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 10px;
+}
+
+th, td {
+    border: 1px solid #ddd;
+    padding: 8px 10px;
+}
+
+th {
+    background-color: #ffb6c1;
+    color: #72002b;
+}
+
+tr:nth-child(even) {
+    background-color: #fff6f8;
+}
+
+/* Back button */
+.back-container {
+    margin-top: 20px;
+}
+
 .back-btn {
     display: inline-block;
-    margin-top: 10px;
-    padding: 12px 22px;
-    background-color: #ff3366;
-    color: #ffffff;
     text-decoration: none;
-    border-radius: 8px;
-    font-weight: 600;
-    transition: background-color 0.3s ease, transform 0.1s ease-in-out;
+    background-color: #ff4f7b;
+    color: white;
+    padding: 10px 18px;
+    border-radius: 10px;
+    font-weight: 500;
+    transition: background-color 0.3s ease;
 }
 
 .back-btn:hover {
-    background-color: #cc0033;
-    transform: scale(1.05);
+    background-color: #e0446c;
 }
 
-/* Responsive adjustments */
-@media (max-width: 480px) {
-    form {
-        padding: 25px 20px;
-    }
-
-    h2 {
-        font-size: 22px;
-    }
-
-    input[type="submit"] {
-        font-size: 16px;
-    }
-}

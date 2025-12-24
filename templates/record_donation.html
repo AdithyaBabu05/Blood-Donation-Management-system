@@ -1,39 +1,86 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <title>Record Blood Donation</title>
-    <link rel="stylesheet" href="../static/stylerecord.css">">
+    <meta charset="UTF-8">
+    <title>Record Donation</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='stylerecord.css') }}">
+    <style>
+        .flash-message {
+            padding: 10px 15px;
+            border-radius: 5px;
+            margin-bottom: 10px;
+            font-weight: bold;
+            transition: opacity 0.5s ease;
+        }
+        .flash-success { background-color: #d4edda; color: #155724; }
+        .flash-danger { background-color: #f8d7da; color: #721c24; }
+    </style>
 </head>
 <body>
-    <div class="container">
+<div class="container">
+    <h1>Record Donation</h1>
 
-        <!-- Success message (hidden by default, shown after submit) -->
-        <div id="success" class="success">
-            <h2>✅ Donation Recorded Successfully!</h2>
-            <p>Thank you for your contribution.</p>
-            <!-- Back to Homepage button -->
-            <a href="home.html" class="back-btn">Back to Homepage</a>
+    {% with messages = get_flashed_messages(with_categories=true) %}
+    {% if messages %}
+        <div id="flash-container">
+        {% for category, message in messages %}
+            <div class="flash-message flash-{{ category }}">{{ message }}</div>
+        {% endfor %}
+        </div>
+    {% endif %}
+    {% endwith %}
+
+    <form method="POST" class="donation-form">
+        <label for="donor_name">Donor Name:</label>
+        <input type="text" name="donor_name" required>
+
+        <label for="donor_contact">Donor Contact:</label>
+        <input type="text" name="donor_contact" required>
+
+        <label for="donation_date">Donation Date:</label>
+        <input type="date" name="donation_date" value="{{ default_date }}">
+
+        <label for="blood_type">Blood Type:</label>
+        <input type="text" name="blood_type">
+
+        <label for="units">Units:</label>
+        <input type="number" name="units" required min="1">
+
+        <label for="bank_select">Blood Bank:</label>
+        <select name="bank_select" id="bank_select" onchange="toggleNewBank()">
+            {% for bank in banks %}
+                <option value="{{ bank['id'] }}">{{ bank['name'] }} ({{ bank['location'] }})</option>
+            {% endfor %}
+            <option value="new">-- Add New Bank --</option>
+        </select>
+
+        <div id="new_bank_fields" style="display:none;">
+            <label for="new_bank_name">New Bank Name:</label>
+            <input type="text" name="new_bank_name">
+
+            <label for="new_bank_location">City / Location:</label>
+            <input type="text" name="new_bank_location">
         </div>
 
-        <!-- Donation form -->
-        <form method="GET" action="#success">
-            <h2>Record Blood Donation</h2>
-            
-            <label for="donor_id">Donor ID:</label>
-            <input type="number" id="donor_id" name="donor_id" placeholder="Enter Donor ID" required>
+        <button type="submit">Record Donation</button>
+    </form>
+</div>
 
-            <label for="bank_id">Blood Bank ID:</label>
-            <input type="number" id="bank_id" name="bank_id" placeholder="Enter Blood Bank ID" required>
+<script>
+    function toggleNewBank() {
+        const select = document.getElementById("bank_select");
+        const newFields = document.getElementById("new_bank_fields");
+        newFields.style.display = select.value === "new" ? "block" : "none";
+    }
 
-            <label for="donation_date">Donation Date:</label>
-            <input type="date" id="donation_date" name="donation_date" required>
+    // Ensure visibility is correct on page load (in case of flash reload)
+    window.onload = toggleNewBank;
 
-            <label for="quantity">Quantity (Units):</label>
-            <input type="number" id="quantity" name="quantity" placeholder="Enter Quantity" required>
-
-            <input type="submit" value="Record Donation">
-        </form>
-    </div>
+    // Auto-remove flash messages after 4 seconds
+    setTimeout(() => {
+        const flashes = document.querySelectorAll('.flash-message');
+        flashes.forEach(f => f.remove());
+    }, 4000);
+</script>
 </body>
 </html>
-

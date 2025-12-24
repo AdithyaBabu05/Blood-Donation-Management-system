@@ -1,1 +1,10 @@
+# Python cache files
+__pycache__/
+*.pyc
+
+# Local database
 bdms.db
+
+# Optional: OS files
+.DS_Store
+Thumbs.db

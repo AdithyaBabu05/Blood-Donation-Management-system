@@ -5,7 +5,7 @@ import os
 BASE_DIR = os.path.abspath(os.path.dirname(__file__))
 DATABASE = os.path.join(BASE_DIR, "bdms.db")
 def init_db():
-    db = sqlite3.connect(DATABASE)
+    db = sqlite3.connect(DATABASE, check_same_thread=False)
     cur = db.cursor()
 
     cur.execute('''

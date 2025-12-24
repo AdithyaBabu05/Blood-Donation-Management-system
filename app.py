@@ -6,7 +6,8 @@ from create_db import init_db
 
 
 # --- Configuration ---
-DATABASE = "bdms.db"
+BASE_DIR = os.path.abspath(os.path.dirname(__file__))
+DATABASE = os.path.join(BASE_DIR, "bdms.db")
 SECRET_KEY = "dev-secret-key"
 
 app = Flask(__name__)
@@ -216,16 +217,6 @@ def record_donation():
 # Manage stock manually
 @app.route("/stock/manage", methods=["GET", "POST"])
 def manage_stock():
-    db = get_db()
-    cur = db.cursor()
-    cur.execute("""
-        CREATE TABLE IF NOT EXISTS blood_stock (
-            blood_type TEXT PRIMARY KEY,
-            total_units INTEGER DEFAULT 0
-        )
-    """)
-    db.commit()
-
     if request.method == "POST":
         blood_type = request.form.get("blood_type").strip().upper()
         units = int(request.form.get("quantity"))
